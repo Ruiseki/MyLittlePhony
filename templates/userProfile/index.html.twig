@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        font-size: 30px;
+        margin: 0px 0px 0px 0px;
+        padding-top: 10%;
+    }
+
+    #changeName {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #changeNameInput, #changeNameButton {
+        margin-bottom: 10px;
+        text-align: center;
+        border-radius: 15px;
+        font-size: 20px;
+        height: 35px;
+        width: 300px;
+    }
+
+    #skills {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<div>
+    <div id="changeName">
+        <input id="changeNameInput" type="text" placeholder="New name" maxlength="16"/>
+        <button id="changeNameButton">Submit</button>
+    </div>
+
+    <div id="skills">
+        <p>My skills :</p>
+    </div>
+</div>
+{% endblock %}
