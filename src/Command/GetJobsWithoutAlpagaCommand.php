@@ -24,10 +24,11 @@ class GetJobsWithoutAlpagaCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         /* write algo here */
+        $offers = ['offre1','offre2','offre3'];
 
-
-
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        foreach ($offers as $value) {
+            $io->success($value);
+        }
 
         return Command::SUCCESS;
     }
