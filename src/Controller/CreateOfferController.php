@@ -15,4 +15,14 @@ class CreateOfferController extends AbstractController
             'controller_name' => 'CreateOfferController',
         ]);
     }
+
+    public function createJob(Response $response){
+        $job = new Job();
+        $job = setTitle($response.title);
+        $job = setDescription($response.description);
+    }
+
+    public function createSkills(Response $response){
+        
+    }
 }
