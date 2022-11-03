@@ -9,9 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 class CreateOfferController extends AbstractController
 {
+
+    public function __construct(private ManagerRegistry $doctrine) {}
 
     #[Route('/create/offer', name: 'app_create_offer')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
@@ -20,12 +23,12 @@ class CreateOfferController extends AbstractController
 
         $form = $this->createForm(OfferFormType::class, $offer);
 
-        $data = $form->getValues();
+        $form->handleRequest($request);
+        $offer->getBusiness();
 
         if ($form->isSubmitted() && $form->isValid()) {
-           $em = $this->getDoctrine()->getManager();
-           $em->persist($data);
-           $em->flush(); 
+           $entityManager->persist($offer);
+           $entityManager->flush(); 
         }
         return $this->render('create_offer/index.html.twig', [
             'controller_name' => 'CreateOfferController',
