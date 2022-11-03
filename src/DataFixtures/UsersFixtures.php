@@ -13,7 +13,11 @@ class UsersFixtures extends Fixture{
         for ($i=0; $i < 20; $i++) { 
             $name = "user" . " " . $i;
             $lastname = "pedro";
-            $skills = ['java','sql','pain aux choco','php'];
+            $skills = "{
+                0:'java',
+                1:'sql',
+                2:'pain aux choco',
+                3:'php'}";
     
             $user = new User();
     
@@ -26,4 +30,3 @@ class UsersFixtures extends Fixture{
         $manager->flush();
     }
 }
-?>

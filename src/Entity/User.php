@@ -1,43 +1,65 @@
-<?php 
+<?php
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-class User{
-    private string $name;
-    private string $lastname;
-    private array $skills;
-    private int $id;
-
-    public function setName(string $name){
-        $this->name = $name;
-    }
-    public function setLastName(string $lastname){
-        $this->lastname = $lastname;
-    }
-    public function setSkills($skills){
-        $this->skills = $skills;
-    }
-
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+class User
+{
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    public function getId(){
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $skills = null;
+
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    #[ORM\Column(length: 255)]
-    public function getName(){
+    public function getName(): ?string
+    {
         return $this->name;
     }
-    
-    #[ORM\Column(length: 255)]
-    public function getLastName(){
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
         return $this->lastname;
     }
-    #[ORM\Column(length: 255)]
-    public function getSkills(){
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getSkills(): ?string
+    {
         return $this->skills;
+    }
+
+    public function setSkills(string $skills): self
+    {
+        $this->skills = $skills;
+
+        return $this;
     }
 }
