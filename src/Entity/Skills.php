@@ -18,9 +18,6 @@ class Skills
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Jobs')]
-    private ?Jobs $Jobs = null;
-
     #[ORM\ManyToMany(targetEntity: Profils::class, mappedBy: 'Skills')]
     private Collection $SkillUser;
 
@@ -46,18 +43,6 @@ class Skills
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getJobs(): ?Jobs
-    {
-        return $this->Jobs;
-    }
-
-    public function setJobs(?Jobs $Jobs): self
-    {
-        $this->Jobs = $Jobs;
 
         return $this;
     }
