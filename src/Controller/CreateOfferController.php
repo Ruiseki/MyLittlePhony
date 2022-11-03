@@ -2,65 +2,31 @@
 
 namespace App\Controller;
 
+use App\Entity\Jobs;
+use App\Form\OfferFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CreateOfferController extends AbstractController
 {
-    protected $title;
-    protected $enterprise;
-    protected $description;
-    protected $html = "HTML/CSS";
-    protected $js = "JS";
-    protected $java = "Java";
-    protected $php = "PHP";
-    protected $laravel = "Laravel";
-    protected $symfony = "Symfony";
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
-
-    public function getEnterprise(): string
-    {
-        return $this->Enterprise;
-    }
-
-    public function setEnterprise(string $enterprise): void
-    {
-        $this->enterprise = $enterprise;
-    }
-
-    public function getDescription(): string
-    {
-        return $this->Description;
-    }
-
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
 
     #[Route('/create/offer', name: 'app_create_offer')]
-    public function index(): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $offer = new Jobs();
+
+        $form = $this->createForm(OfferFormType::class, $offer);
+
+        $form->handleRequest($request);
+
         return $this->render('create_offer/index.html.twig', [
             'controller_name' => 'CreateOfferController',
+            'form' => $form->createView(),
+            
         ]);
-    }
-
-    public function createJob(Response $response){
-        // $job = new Job();
-        // $job = setTitle($response.title);
-        // $job = setEnterprise($response.value["enterprise"])
-        // $job = setDescription($response.description);
     }
 
     public function createSkills(Response $response){
