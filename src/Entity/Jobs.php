@@ -18,19 +18,19 @@ class Jobs
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Jobs')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Business $Business = null;
-
-    #[ORM\OneToMany(mappedBy: 'Jobs', targetEntity: Skills::class)]
-    private Collection $Jobs;
-
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'BusinessJobs')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Business $Business = null;
+
+    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'JobsSkills')]
+    private Collection $Skills;
+
     public function __construct()
     {
-        $this->Jobs = new ArrayCollection();
+        $this->Skills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,6 +50,18 @@ class Jobs
         return $this;
     }
 
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
     public function getBusiness(): ?Business
     {
         return $this->Business;
@@ -65,41 +77,23 @@ class Jobs
     /**
      * @return Collection<int, Skills>
      */
-    public function getJobs(): Collection
+    public function getSkills(): Collection
     {
-        return $this->Jobs;
+        return $this->Skills;
     }
 
-    public function addJob(Skills $job): self
+    public function addSkill(Skills $skill): self
     {
-        if (!$this->Jobs->contains($job)) {
-            $this->Jobs->add($job);
-            $job->setJobs($this);
+        if (!$this->Skills->contains($skill)) {
+            $this->Skills->add($skill);
         }
 
         return $this;
     }
 
-    public function removeJob(Skills $job): self
+    public function removeSkill(Skills $skill): self
     {
-        if ($this->Jobs->removeElement($job)) {
-            // set the owning side to null (unless already changed)
-            if ($job->getJobs() === $this) {
-                $job->setJobs(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
+        $this->Skills->removeElement($skill);
 
         return $this;
     }

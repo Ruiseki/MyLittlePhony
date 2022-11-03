@@ -24,9 +24,13 @@ class Business
     #[ORM\OneToMany(mappedBy: 'Business', targetEntity: Jobs::class, orphanRemoval: true)]
     private Collection $Jobs;
 
+    #[ORM\OneToMany(mappedBy: 'Business', targetEntity: Jobs::class)]
+    private Collection $BusinessJobs;
+
     public function __construct()
     {
         $this->Jobs = new ArrayCollection();
+        $this->BusinessJobs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,6 +86,36 @@ class Business
             // set the owning side to null (unless already changed)
             if ($job->getBusiness() === $this) {
                 $job->setBusiness(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Jobs>
+     */
+    public function getBusinessJobs(): Collection
+    {
+        return $this->BusinessJobs;
+    }
+
+    public function addBusinessJob(Jobs $businessJob): self
+    {
+        if (!$this->BusinessJobs->contains($businessJob)) {
+            $this->BusinessJobs->add($businessJob);
+            $businessJob->setBusiness($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBusinessJob(Jobs $businessJob): self
+    {
+        if ($this->BusinessJobs->removeElement($businessJob)) {
+            // set the owning side to null (unless already changed)
+            if ($businessJob->getBusiness() === $this) {
+                $businessJob->setBusiness(null);
             }
         }
 
