@@ -21,7 +21,7 @@ class ProfileFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Jobs::class,
+            'data_class' => Profile::class,
         ]);
     }
 }

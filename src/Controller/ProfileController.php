@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Profile;
-use App\Form\OfferFormType;
+use App\Form\ProfileFormType;
 use App\Repository\ProfileRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpParser\Node\Name;
@@ -26,7 +26,7 @@ class ProfileController extends AbstractController
             $entityMgr->persist($profile);
             $entityMgr->flush(); 
          }
-        return $this->render('userProfile/index.html.twig', [
+        return $this->render('profile/index.html.twig', [
             'controller_name' => 'UserProfileController',
             'form' => $form->createView(),
         ]);
