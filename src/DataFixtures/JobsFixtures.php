@@ -12,12 +12,11 @@ class JobsFixtures extends Fixture
     {
         for ($i = 0; $i < 20; $i++) {
             $job = new Jobs();
-            $job->setDescription("Hi we search a new alpaga for our business, 
+            $job->setDescription("Hi we search a new Poney for our business, 
             we're specialize in bakery and IT, Why we're hiring ? 
             Cause our very popular website:
              cookie Clicker new an update bla bla bla...");
-             $job->setName('Cookie Alpaga Dev');
-      
+            $job->setName('Cookie Poney Dev');
         }
 
 
