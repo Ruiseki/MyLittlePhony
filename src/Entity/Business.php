@@ -19,7 +19,7 @@ class Business
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?int $phone = null;
+    private ?string $phone = null;
 
     #[ORM\OneToMany(mappedBy: 'Business', targetEntity: Jobs::class, orphanRemoval: true)]
     private Collection $Jobs;
@@ -50,12 +50,12 @@ class Business
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(int $phone): self
+    public function setPhone(string $phone): self
     {
         $this->phone = $phone;
 
