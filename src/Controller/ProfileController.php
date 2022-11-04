@@ -21,10 +21,13 @@ class ProfileController extends AbstractController
         $profile = new Profile();
         $form = $this->createForm(ProfileFormType::class, $profile);
         $form->handleRequest($request);
-        // $bddProfile = $profileRepository->findOneBy(['name' => ]);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityMgr->persist($profile);
-            $entityMgr->flush(); 
+            $entityMgr->flush();
+            return $this->render('base.html.twig', [
+                'controller_name' => 'HomeController'
+            ]
+            );
          }
         return $this->render('profile/index.html.twig', [
             'controller_name' => 'UserProfileController',
