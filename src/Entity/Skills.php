@@ -100,6 +100,4 @@ class Skills
 
         return $this;
     }
-
-
 }
