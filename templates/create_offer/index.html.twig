@@ -5,78 +5,9 @@
 {% block body %}
 <style>
     h1 {text-align: center;}
-    .box { display: flex; flex-direction: column; flex-wrap: wrap;}
-    .createButton {
-        width: 10%; 
-        margin-left: 45%; 
-        margin-right: 45%; 
-        padding-top: 10px; 
-        padding-bottom: 10px; 
-        border-radius: 10px;
-        background-color: blue;
-        color: white;
-        border-color: blue;
-    }
-    .createButton:hover {
-        background-color: lightblue;
-        color: white;
-        border-color: lightblue;
-    }
-    .form-box {
-        margin-left: auto;
-        margin-right: auto;
-    }
 </style>
 
-<div class="example-wrapper">
-    <h1>Create an offer</h1>
-        <form method="get" action="/" class="box">
-            <div class="form-box">
-                <label for="title">Title:</label>
-                <input type="text" name="title">
-            </div>
+<h1>Create an offer</h1>
 
-            <div class="form-box">
-                <label for="description">Description:</label>
-                <input type="textarea" name="description">
-            </div>
-
-            <div class="form-box box">
-                <label for="listSkill">Skills:</label>
-
-                <div class="form-box">
-                    <label for="html">HTML/CSS: </label>
-                    <input type="checkbox" name="html" id="html" value="HTML/CSS">
-                </div>
-
-                <div class="form-box">
-                    <label for="js">JS: </label>
-                    <input type="checkbox" name="js" id="js" value="JS">
-                </div>
-
-                <div class="form-box">
-                    <label for="java">Java: </label>
-                    <input type="checkbox" name="java" id="java" value="Java">
-                </div>
-
-                <div class="form-box">
-                    <label for="php">PHP: </label>
-                    <input type="checkbox" name="php" id="php" value="PHP">
-                </div>
-
-                <div class="form-box">
-                    <label for="symfony">Symfony: </label>
-                    <input type="checkbox" name="symfony" id="symfony" value="Symfony">
-                </div>            
-
-                <div class="form-box">
-                    <label for="laravel">Laravel: </label>
-                    <input type="checkbox" name="laravel" id="laravel" value="Laravel">
-                </div>
-            </div>
-
-            <button type="submit" class="createButton">Create</button>
-        </form>
-    </div>
-</div>
+{{ form(form) }}
 {% endblock %}
