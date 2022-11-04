@@ -36,17 +36,15 @@
 			{% if offers %}
 				{% for element in offers %}
 					<li>
-						<div>
+						<div class="cardO">
 							<h3 style="letter-spacing:5px;">
 								Job offer :
 							</h3>
 							<i class="italic_name">{{element.name}}</i>
-
 							<h3>
 								Description :
 							</h3>
-							<i style="font-size:50%">{{element.description}}</i>
-
+							<i style="font-size:70%" class="italic_name">{{element.description}}</i>
 							<h3>
 								Business :
 							</h3>

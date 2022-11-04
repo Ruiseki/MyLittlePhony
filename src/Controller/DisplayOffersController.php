@@ -15,7 +15,6 @@ class DisplayOffersController extends AbstractController
     public function index(JobsRepository $jobsRepository, SkillsRepository $skillsRepository): Response
     {
         $result = $jobsRepository->findAll();
-        $result2 = $skillsRepository->findAll();
         return $this->render('display_offers/index.html.twig', [
             'controller_name' => 'Offers',
             'offers' => $result,

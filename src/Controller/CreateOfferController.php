@@ -31,6 +31,10 @@ class CreateOfferController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
            $entityManager->persist($offer);
            $entityManager->flush(); 
+           return $this->render('base.html.twig', [
+            'controller_name' => 'HomeController'
+        ]
+        );
         }
         return $this->render('create_offer/index.html.twig', [
             'controller_name' => 'CreateOfferController',
