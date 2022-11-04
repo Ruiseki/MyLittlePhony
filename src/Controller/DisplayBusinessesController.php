@@ -15,6 +15,7 @@ class DisplayBusinessesController extends AbstractController
         $result = $businessRepository->findAll();
         return $this->render('display_businesses/index.html.twig', [
             'controller_name' => 'DisplayBusinessesController',
+            'businesses' => $result
         ]);
     }
 }
