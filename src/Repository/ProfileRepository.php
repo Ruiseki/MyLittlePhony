@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Profils;
+use App\Entity\Profile;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Profils>
+ * @extends ServiceEntityRepository<Profile>
  *
- * @method Profils|null find($id, $lockMode = null, $lockVersion = null)
- * @method Profils|null findOneBy(array $criteria, array $orderBy = null)
- * @method Profils[]    findAll()
- * @method Profils[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Profile|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Profile|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Profile[]    findAll()
+ * @method Profile[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ProfilsRepository extends ServiceEntityRepository
+class ProfileRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Profils::class);
+        parent::__construct($registry, Profile::class);
     }
 
-    public function save(Profils $entity, bool $flush = false): void
+    public function save(Profile $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ProfilsRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Profils $entity, bool $flush = false): void
+    public function remove(Profile $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ProfilsRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Profils[] Returns an array of Profils objects
+//     * @return Profile[] Returns an array of Profile objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ProfilsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Profils
+//    public function findOneBySomeField($value): ?Profile
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')
