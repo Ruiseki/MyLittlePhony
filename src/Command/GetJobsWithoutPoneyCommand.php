@@ -10,10 +10,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 
 #[AsCommand(
-    name: 'getJobsWithoutAlpaga',
+    name: 'getJobsWithoutPoney',
     description: 'Add a short description for your command',
 )]
-class GetJobsWithoutAlpagaCommand extends Command
+class GetJobsWithoutPoneyCommand extends Command
 {
     protected function configure(): void
     {
@@ -24,7 +24,7 @@ class GetJobsWithoutAlpagaCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         /* write algo here */
-        $offers = ['offre1','offre2','offre3'];
+        $offers = ['offre1', 'offre2', 'offre3'];
 
         foreach ($offers as $value) {
             $io->success($value);
