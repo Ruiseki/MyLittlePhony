@@ -7,7 +7,7 @@ use App\Entity\Jobs;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Skills;
-use App\Entity\Profils;
+use App\Entity\Profile;
 use Doctrine\ORM\Mapping\Id;
 
 class SkillsFixtures extends Fixture
@@ -60,7 +60,7 @@ class SkillsFixtures extends Fixture
         }
         // PROFILES √
         for ($i = 0; $i < (count($profile_name_list)); $i++) {
-            $profile = new Profils();
+            $profile = new Profile();
             $profile->setName($profile_name_list[$i]);
             $manager->persist($profile);
             for ($j = 0; $j < random_int(1, 3); $j++) {
