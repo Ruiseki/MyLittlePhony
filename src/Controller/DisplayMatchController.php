@@ -17,7 +17,7 @@ class DisplayMatchController extends AbstractController
         $result = $jobsRepository->Findall();
         $result2 = $profileRepository->Findall();
         return $this->render('display_match/index.html.twig', [
-            'controller_name' => "alalalalaalal",
+            'controller_name' => "matching",
             'jobs' => $result,
             'profiles' => $result2,
         ]);
