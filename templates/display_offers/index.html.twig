@@ -7,13 +7,8 @@
 	<style>
 		.example-wrapper {
 			margin: 1em auto;
-			max-width: 800px;
 			width: 95%;
 			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
 		}
 		.title {
 			color: red;
@@ -32,16 +27,16 @@
 		}
 	</style>
 
-	<div class="example-wrapper">
+	<div class="example-wrapper col-8">
 		<h1 style="text-align:center;">Hello, here is the
 			{{ controller_name }}
 			page !</h1>
 
-		<ul style="list-style-type: none;">
+		<ul style="list-style-type: none;" class="cards-wrapper">
 			{% if offers %}
 				{% for element in offers %}
 					<li>
-						<div style=" padding:3%; text-align:center; width: 400px; margin: 0px auto; background-color: white; box-shadow: 0px 5px 20px #999;">
+						<div>
 							<h3 style="letter-spacing:5px;">
 								Job offer :
 							</h3>
