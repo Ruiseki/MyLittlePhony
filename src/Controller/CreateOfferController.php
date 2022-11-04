@@ -40,4 +40,5 @@ class CreateOfferController extends AbstractController
     public function createSkills(Response $response){
         
     }
+
 }

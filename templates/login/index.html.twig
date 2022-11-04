@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+<style>
+    body div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 400px;
+    }
+
+    body div input {
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 40px;
+        border-radius: 15px;
+        border-style: solid;
+        background-color: rgb(63, 63, 63);
+        width: 400px;
+    }
+
+    body div button {
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 40px;
+        border-radius: 15px;
+        border-style: solid;
+        background-color: rgb(63, 63, 63);
+        width: 400px;
+    }
+</style>
+
+<body>
+    <div>
+        <input type="text" placeholder="Enterprise name">
+        <input type="text" placeholder="Cellphone number">
+        <button>Login</button>
+    </div>
+</body>
+{% endblock %}
