@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DisplayMatchController!
+{% endblock %}
+
+{% block body %}
+	<div>
+		<h1>
+			Welcome on the
+			{{ controller_name }}
+			page!</h1>
+
+
+		{% if jobs %}
+        <ul class="example-wrapper">
+			{% for job in jobs %}
+				{% for jskill in job.skills %}
+					{% if profiles %}
+						{% for profile in profiles %}
+							{% for pskill in profile.skills %}
+								{% if jskill == pskill %}
+									<li>{{job.name}}
+										==>
+										{{profile.name}}</li>
+								{% endif %}
+							{% endfor %}
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		{% else %}
+			<li>
+				There is no profile skills for the moment.
+			</li>
+		{% endif %}
+        </ul>
+	</div>
+{% endblock %}
