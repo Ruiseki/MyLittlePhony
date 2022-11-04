@@ -4,6 +4,8 @@ namespace App\Tests;
 
 use App\Entity\Jobs;
 use App\Entity\Business;
+use App\Entity\Profils;
+use App\Entity\Skills;
 use PHPUnit\Framework\TestCase;
 
 class MatchingUnitTest extends TestCase
@@ -12,6 +14,14 @@ class MatchingUnitTest extends TestCase
     {
         $job = new Jobs();
         $bus = new Business();
+        $skills = new Skills();
+        $profile = new Profils();
+
+        $profile->setName('Bobby');
+        $profile->addSkill(
+            $skills->setName('Java')
+        );
+
         $bus->setName("SPACE-1222 Inc.");
         $bus->setPhone("03 65 13 12 22");
 
@@ -20,10 +30,19 @@ class MatchingUnitTest extends TestCase
         $this->assertTrue($job->getName() === 'titre');
         $this->assertTrue($job->getDescription() === "lorem description de l'offre");
     }
+    
     public function testFalse(): void
     {
         $job = new Jobs();
         $bus = new Business();
+        $skills = new Skills();
+        $profile = new Profils();
+
+        $profile->setName('Bobby');
+        $profile->addSkill(
+            $skills->setName('Java')
+        );
+
         $bus->setName("SPACE-1222 Inc.");
         $bus->setPhone("03 65 13 12 22");
 
