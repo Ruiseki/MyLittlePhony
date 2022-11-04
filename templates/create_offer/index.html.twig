@@ -3,11 +3,12 @@
 {% block title %}MyLittlePhony{% endblock %}
 
 {% block body %}
-<style>
-    h1 {text-align: center;}
-</style>
 
-<h1>Create an offer</h1>
+<div class="container form">
+        <div class="col-8 text-center">
+            <h1>Create an offer</h1>
+            {{ form(form) }}
+        </div>
+</div>
 
-{{ form(form) }}
 {% endblock %}
