@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DisplayMatchController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    {% if jobs %}
+        {% for job in jobs %}
+            {% for jskill in job.skills %}
+                {% if profiles %}
+                    {% for profile in profiles %}
+                        {% for pskill in profile.skills %}
+                            {% if jskill == pskill %}
+                            <li>{{job.name}} ==> {{profile.name}}</li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <li> There is no profile skills for the moment. </li>
+    {% endif %}
+</div>
+{% endblock %}
